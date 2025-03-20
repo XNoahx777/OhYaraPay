@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alliance Holding LLC - Préstamos Rápidos</title>
+    <title>OhYaraPay (Préstamos) - Alliance Holding LLC</title>
     <style>
-        /* Estilo general */
+        /* Estilos generales */
         body {
             background: #000;
             color: white;
@@ -42,7 +42,7 @@
             background: rgba(0, 0, 0, 0.8);
         }
 
-        /* Formularios e inputs */
+        /* Inputs y botón */
         input, button {
             padding: 12px 20px;
             margin: 10px;
@@ -75,6 +75,28 @@
             font-size: 1.5em;
         }
 
+        /* Información adicional */
+        .info {
+            margin-top: 40px;
+            text-align: left;
+            padding: 0 20px;
+        }
+
+        /* Lista de bancos */
+        .bancos {
+            margin-top: 20px;
+        }
+
+        .bancos ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .bancos li {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
         /* Pie de página */
         .footer {
             margin-top: 40px;
@@ -92,7 +114,7 @@
 <body>
 
     <!-- Título principal -->
-    <div class="header">Préstamos al 11% - Todos los Bancos del Perú</div>
+    <div class="header">OhYaraPay (Préstamos) - Alliance Holding LLC</div>
 
     <!-- Calculadora -->
     <div class="contenedor">
@@ -110,9 +132,33 @@
         <div id="resultado"></div>
     </div>
 
-    <!-- Información de la empresa -->
+    <!-- Información sobre cómo solicitar un préstamo -->
+    <div class="info">
+        <h2>¿Cómo solicitar un préstamo con OhYaraPay?</h2>
+        <p>1. Ingresa el monto y el plazo para calcular tu cuota mensual.</p>
+        <p>2. Completa el formulario de solicitud que te proporcionaremos.</p>
+        <p>3. Evaluaremos tu solicitud y te contactaremos en menos de 24 horas.</p>
+        <p>4. Una vez aprobado, recibirás el desembolso directamente en tu cuenta bancaria.</p>
+    </div>
+
+    <!-- Lista de bancos con los que trabajamos -->
+    <div class="bancos">
+        <h2>Bancos del Perú con los que trabajamos:</h2>
+        <ul>
+            <li>Banco de Crédito del Perú (BCP)</li>
+            <li>Interbank</li>
+            <li>BBVA Perú</li>
+            <li>Scotiabank</li>
+            <li>Banco Pichincha</li>
+            <li>MiBanco</li>
+            <li>Banco Falabella</li>
+            <li>Banco Ripley</li>
+        </ul>
+    </div>
+
+    <!-- Pie de página -->
     <div class="footer">
-        ¡Trabajamos con todos los bancos del Perú para brindarte las mejores opciones!
+        ¡En OhYaraPay, hacemos tus sueños realidad con préstamos rápidos y seguros!
     </div>
     <div class="logo">Una app de <strong>Alliance Holding LLC</strong></div>
 
@@ -135,6 +181,7 @@
             document.getElementById('resultado').innerHTML = `
                 <p>Cuota mensual: S/ ${cuota.toFixed(2)}</p>
                 <p>Total a pagar: S/ ${totalPagar.toFixed(2)}</p>
+                <p>Tasa de interés anual: 11%</p>
             `;
         }
     </script>
