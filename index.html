@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Préstamos Rápidos - Todos los Bancos del Perú</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 3em;
+            animation: parpadeo 1s infinite alternate;
+        }
+
+        @keyframes parpadeo {
+            0% {
+                color: #ff6600;
+            }
+
+            100% {
+                color: #ff9900;
+            }
+        }
+
+        .contenedor {
+            margin-top: 50px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #ff6600;
+            color: black;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ff9900;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            font-size: 1.5em;
+        }
+
+        .footer {
+            margin-top: 50px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Préstamos al 11% - Todos los Bancos del Perú</h1>
+
+    <div class="contenedor">
+        <h2>Calculadora de Préstamos</h2>
+        <label for="monto">Monto del préstamo (S/):</label>
+        <input type="number" id="monto" placeholder="Ingresa el monto" required>
+        <br>
+        <label for="meses">Plazo en meses:</label>
+        <input type="number" id="meses" placeholder="Ingresa los meses" required>
+        <br>
+        <button onclick="calcularPrestamo()">Calcular</button>
+
+        <div id="resultado"></div>
+    </div>
+
+    <div class="footer">
+        ¡Trabajamos con todos los bancos del Perú para brindarte las mejores opciones!
+    </div>
+
+    <script>
+        function calcularPrestamo() {
+            const monto = parseFloat(document.getElementById('monto').value);
+            const meses = parseInt(document.getElementById('meses').value);
+            const tasaInteres = 0.11 / 12; // 11% anual dividido entre 12 meses
+
+            if (isNaN(monto) || isNaN(meses) || monto <= 0 || meses <= 0) {
+                alert("Por favor, ingresa valores válidos.");
+                return;
+            }
+
+            // Cálculo de cuota mensual (Fórmula de amortización francesa)
+            const cuota = monto * (tasaInteres * Math.pow(1 + tasaInteres, meses)) / (Math.pow(1 + tasaInteres, meses) - 1);
+            const totalPagar = cuota * meses;
+
+            document.getElementById('resultado').innerHTML = `
+                <p>Cuota mensual: S/ ${cuota.toFixed(2)}</p>
+                <p>Total a pagar: S/ ${totalPagar.toFixed(2)}</p>
+            `;
+        }
+    </script>
+
+</body>
+
+</html>
