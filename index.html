@@ -4,86 +4,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Préstamos Rápidos - Todos los Bancos del Perú</title>
+    <title>Alliance Holding LLC - Préstamos Rápidos</title>
     <style>
+        /* Estilo general */
         body {
-            background-color: black;
+            background: #000;
             color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
+            text-align: center;
+            line-height: 1.6;
         }
 
-        h1 {
+        /* Encabezado con animación */
+        .header {
+            padding: 40px 20px;
             font-size: 3em;
-            animation: parpadeo 1s infinite alternate;
+            animation: brillo 1.5s infinite alternate;
         }
 
-        @keyframes parpadeo {
+        @keyframes brillo {
             0% {
-                color: #ff6600;
+                text-shadow: 0 0 10px #ff6600, 0 0 20px #ff9900;
             }
-
             100% {
-                color: #ff9900;
+                text-shadow: 0 0 20px #ff9900, 0 0 30px #ff6600;
             }
         }
 
+        /* Contenedor principal */
         .contenedor {
-            margin-top: 50px;
+            margin: 50px 20px;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 15px #ff6600;
+            background: rgba(0, 0, 0, 0.8);
         }
 
+        /* Formularios e inputs */
         input, button {
-            padding: 10px;
+            padding: 12px 20px;
             margin: 10px;
             font-size: 1.2em;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        input {
+            background: #333;
+            color: white;
         }
 
         button {
-            background-color: #ff6600;
+            background: linear-gradient(45deg, #ff6600, #ff9900);
             color: black;
+            font-weight: bold;
             cursor: pointer;
+            transition: transform 0.3s;
         }
 
         button:hover {
-            background-color: #ff9900;
+            transform: scale(1.1);
         }
 
+        /* Resultado */
         #resultado {
-            margin-top: 20px;
+            margin-top: 30px;
             font-size: 1.5em;
         }
 
+        /* Pie de página */
         .footer {
-            margin-top: 50px;
+            margin-top: 40px;
             font-size: 1.2em;
+        }
+
+        .logo {
+            margin-top: 20px;
+            font-size: 1em;
+            opacity: 0.8;
         }
     </style>
 </head>
 
 <body>
-    <h1>Préstamos al 11% - Todos los Bancos del Perú</h1>
 
+    <!-- Título principal -->
+    <div class="header">Préstamos al 11% - Todos los Bancos del Perú</div>
+
+    <!-- Calculadora -->
     <div class="contenedor">
         <h2>Calculadora de Préstamos</h2>
+
         <label for="monto">Monto del préstamo (S/):</label>
         <input type="number" id="monto" placeholder="Ingresa el monto" required>
-        <br>
+
         <label for="meses">Plazo en meses:</label>
         <input type="number" id="meses" placeholder="Ingresa los meses" required>
+
         <br>
         <button onclick="calcularPrestamo()">Calcular</button>
 
         <div id="resultado"></div>
     </div>
 
+    <!-- Información de la empresa -->
     <div class="footer">
         ¡Trabajamos con todos los bancos del Perú para brindarte las mejores opciones!
     </div>
+    <div class="logo">Una app de <strong>Alliance Holding LLC</strong></div>
 
+    <!-- Script de la calculadora -->
     <script>
         function calcularPrestamo() {
             const monto = parseFloat(document.getElementById('monto').value);
