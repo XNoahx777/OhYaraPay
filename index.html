@@ -17,15 +17,16 @@
             line-height: 1.6;
         }
 
-        /* Encabezado (header) en color naranja */
+        /* Encabezado en blanco con fuente elegante */
         .header {
-            background: linear-gradient(45deg, #ff6600, #ff9900);
+            background: white;
             padding: 40px 20px;
             font-size: 3em;
             color: black;
             font-weight: bold;
             text-transform: uppercase;
             border-bottom: 5px solid #ff9900;
+            font-family: 'Poppins', sans-serif;
         }
 
         /* Contenedor principal */
@@ -77,7 +78,7 @@
             padding: 0 20px;
         }
 
-        /* Lista de bancos */
+        /* Lista de bancos con imágenes */
         .bancos {
             margin-top: 20px;
         }
@@ -88,8 +89,17 @@
         }
 
         .bancos li {
-            margin: 10px 0;
+            margin: 20px 0;
             font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .bancos img {
+            width: 50px;
+            height: auto;
+            border-radius: 8px;
         }
 
         /* Pie de página */
@@ -109,53 +119,52 @@
 <body>
 
     <!-- Encabezado principal -->
-    <div class="header">OhYaraPay (Préstamos)</div>
+    <div class="header">🚀 OhYaraPay (Préstamos)</div>
 
     <!-- Calculadora -->
     <div class="contenedor">
-        <h2>Calculadora de Préstamos</h2>
+        <h2>🧮 Calculadora de Préstamos</h2>
 
-        <label for="monto">Monto del préstamo (S/):</label>
+        <label for="monto">💰 Monto del préstamo (S/):</label>
         <input type="number" id="monto" placeholder="Ingresa el monto" required>
 
-        <label for="meses">Plazo en meses:</label>
+        <label for="meses">📅 Plazo en meses:</label>
         <input type="number" id="meses" placeholder="Ingresa los meses" required>
 
         <br>
-        <button onclick="calcularPrestamo()">Calcular</button>
+        <button onclick="calcularPrestamo()">Calcular 📊</button>
 
         <div id="resultado"></div>
     </div>
 
     <!-- Información sobre cómo solicitar un préstamo -->
     <div class="info">
-        <h2>¿Cómo solicitar un préstamo con OhYaraPay?</h2>
+        <h2>📋 ¿Cómo solicitar un préstamo con OhYaraPay?</h2>
         <p>1. Ingresa el monto y el plazo para calcular tu cuota mensual.</p>
         <p>2. Completa el formulario de solicitud que te proporcionaremos.</p>
         <p>3. Evaluaremos tu solicitud y te contactaremos en menos de 24 horas.</p>
-        <p>4. Una vez aprobado, recibirás el desembolso directamente en tu cuenta bancaria.</p>
+        <p>4. Una vez aprobado, recibirás el desembolso directamente en tu cuenta bancaria. 🏦</p>
     </div>
 
     <!-- Lista de bancos con los que trabajamos -->
     <div class="bancos">
-        <h2>Bancos del Perú con los que trabajamos:</h2>
+        <h2>🏦 Bancos del Perú con los que trabajamos:</h2>
         <ul>
-            <li>Banco de Crédito del Perú (BCP)</li>
-            <li>Interbank</li>
-            <li>BBVA Perú</li>
-            <li>Scotiabank</li>
-            <li>Banco Pichincha</li>
-            <li>MiBanco</li>
-            <li>Banco Falabella</li>
-            <li>Banco Ripley</li>
+            <li><img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Logo_BCP.png" alt="BCP"> Banco de Crédito del Perú (BCP)</li>
+            <li><img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Interbank_logo.png" alt="Interbank"> Interbank</li>
+            <li><img src="https://upload.wikimedia.org/wikipedia/commons/0/03/BBVA_logo.png" alt="BBVA"> BBVA Perú</li>
+            <li><img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Scotiabank.png" alt="Scotiabank"> Scotiabank</li>
+            <li><img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Banco_Pichincha_Logo.png" alt="Banco Pichincha"> Banco Pichincha</li>
+            <li><img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Logo_Mibanco.png" alt="MiBanco"> MiBanco</li>
+            <li><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Logo_Banco_Falabella.png" alt="Banco Falabella"> Banco Falabella</li>
+            <li><img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Logo_Banco_Ripley.png" alt="Banco Ripley"> Banco Ripley</li>
         </ul>
     </div>
 
     <!-- Pie de página -->
     <div class="footer">
-        ¡En OhYaraPay, hacemos tus sueños realidad con préstamos rápidos y seguros!
+        ¡En OhYaraPay, hacemos tus sueños realidad con préstamos rápidos y seguros! 🚀
     </div>
-    <div class="logo">Una app de <strong>Alliance Holding LLC</strong></div>
 
     <!-- Script de la calculadora -->
     <script>
@@ -174,9 +183,9 @@
             const totalPagar = cuota * meses;
 
             document.getElementById('resultado').innerHTML = `
-                <p>Cuota mensual: S/ ${cuota.toFixed(2)}</p>
-                <p>Total a pagar: S/ ${totalPagar.toFixed(2)}</p>
-                <p>Tasa de interés anual: 11%</p>
+                <p>💸 Cuota mensual: S/ ${cuota.toFixed(2)}</p>
+                <p>📊 Total a pagar: S/ ${totalPagar.toFixed(2)}</p>
+                <p>📈 Tasa de interés anual: 11%</p>
             `;
         }
     </script>
