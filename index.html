@@ -13,20 +13,19 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            text-align: center;
             line-height: 1.6;
+            text-align: center;
         }
 
-        /* Encabezado en blanco con fuente elegante */
+        /* Encabezado atractivo */
         .header {
-            background: white;
+            background: linear-gradient(135deg, #ff7f50, #ff4500);
+            color: white;
             padding: 40px 20px;
             font-size: 3em;
-            color: black;
             font-weight: bold;
             text-transform: uppercase;
-            border-bottom: 5px solid #ff9900;
-            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 5px 15px rgba(255, 69, 0, 0.5);
         }
 
         /* Contenedor principal */
@@ -34,12 +33,12 @@
             margin: 50px 20px;
             padding: 20px;
             border-radius: 20px;
-            box-shadow: 0 0 15px #ff6600;
+            box-shadow: 0 0 15px #ff4500;
             background: rgba(0, 0, 0, 0.8);
         }
 
         /* Inputs y botón */
-        input, button {
+        input, button, textarea {
             padding: 12px 20px;
             margin: 10px;
             font-size: 1.2em;
@@ -48,14 +47,15 @@
             outline: none;
         }
 
-        input {
+        input, textarea {
             background: #333;
             color: white;
+            width: 80%;
         }
 
         button {
-            background: linear-gradient(45deg, #ff6600, #ff9900);
-            color: black;
+            background: linear-gradient(45deg, #ff7f50, #ff4500);
+            color: white;
             font-weight: bold;
             cursor: pointer;
             transition: transform 0.3s;
@@ -108,11 +108,27 @@
             font-size: 1.2em;
         }
 
-        .logo {
-            margin-top: 20px;
-            font-size: 1em;
-            opacity: 0.8;
+        /* Icono de WhatsApp flotante */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: white;
+            border-radius: 50%;
+            padding: 15px;
+            font-size: 2em;
+            text-decoration: none;
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.7);
+            z-index: 1000;
         }
+
+        /* Formulario de contacto */
+        .formulario {
+            margin-top: 40px;
+            text-align: center;
+        }
+
     </style>
 </head>
 
@@ -154,16 +170,24 @@
             <li><img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Interbank_logo.png" alt="Interbank"> Interbank</li>
             <li><img src="https://upload.wikimedia.org/wikipedia/commons/0/03/BBVA_logo.png" alt="BBVA"> BBVA Perú</li>
             <li><img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Scotiabank.png" alt="Scotiabank"> Scotiabank</li>
-            <li><img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Banco_Pichincha_Logo.png" alt="Banco Pichincha"> Banco Pichincha</li>
-            <li><img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Logo_Mibanco.png" alt="MiBanco"> MiBanco</li>
-            <li><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Logo_Banco_Falabella.png" alt="Banco Falabella"> Banco Falabella</li>
-            <li><img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Logo_Banco_Ripley.png" alt="Banco Ripley"> Banco Ripley</li>
         </ul>
     </div>
 
+    <!-- Formulario de contacto -->
+    <div class="formulario">
+        <h2>✍️ Déjanos tus datos</h2>
+        <input type="text" id="nombre" placeholder="Tu nombre" required><br>
+        <input type="email" id="email" placeholder="Tu correo electrónico" required><br>
+        <textarea id="mensaje" placeholder="Tu mensaje" rows="4" required></textarea><br>
+        <button>Enviar 📩</button>
+    </div>
+
+    <!-- Icono de WhatsApp flotante -->
+    <a href="https://wa.me/123456789" class="whatsapp-float" target="_blank">📞</a>
+
     <!-- Pie de página -->
     <div class="footer">
-        ¡En OhYaraPay, hacemos tus sueños realidad con préstamos rápidos y seguros! 🚀
+        ¡En OhYaraPay, te ayudamos a realizar tus sueños realidad con préstamos rápidos y seguros! 🚀
     </div>
 
     <!-- Script de la calculadora -->
@@ -171,14 +195,13 @@
         function calcularPrestamo() {
             const monto = parseFloat(document.getElementById('monto').value);
             const meses = parseInt(document.getElementById('meses').value);
-            const tasaInteres = 0.11 / 12; // 11% anual dividido entre 12 meses
+            const tasaInteres = 0.11 / 12;
 
             if (isNaN(monto) || isNaN(meses) || monto <= 0 || meses <= 0) {
                 alert("Por favor, ingresa valores válidos.");
                 return;
             }
 
-            // Cálculo de cuota mensual (Fórmula de amortización francesa)
             const cuota = monto * (tasaInteres * Math.pow(1 + tasaInteres, meses)) / (Math.pow(1 + tasaInteres, meses) - 1);
             const totalPagar = cuota * meses;
 
