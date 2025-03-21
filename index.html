@@ -13,6 +13,22 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            flex-direction: column;
+        }
+        .banner {
+            background-color: #4a90e2;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 20px;
+        }
+        .banner img {
+            width: 50px; /* Ajusta el tamaño del logo aquí */
+            display: block;
+            margin: 0 auto;
         }
         .calculator {
             background-color: #ffffff;
@@ -58,8 +74,13 @@
 </head>
 <body>
 
-<div class="calculator">
+<div class="banner">
+    <img src="https://via.placeholder.com/50" alt="Logo de Banco">
     <h1>OhYaraPay</h1>
+    <p>💰</p> <!-- Puedes cambiar este emoji por otro o una imagen -->
+</div>
+
+<div class="calculator">
     <label for="amount">Monto del Préstamo:</label>
     <input type="number" id="amount" placeholder="Ingrese el monto" required>
     
