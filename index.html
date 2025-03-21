@@ -7,11 +7,20 @@
   <style>
     /* Estilos generales */
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Roboto', sans-serif;
       margin: 0;
       padding: 0;
+      background-color: #f0f2f5;
+      color: #333;
     }
-    /* Encabezado */
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
     header {
       background-color: #0072C6;
       color: #fff;
@@ -22,205 +31,185 @@
       font-size: 24px;
       font-weight: bold;
     }
-    /* Sección principal */
-    .hero {
-      background-color: #F5F5F5;
-      padding: 50px 20px;
-      text-align: center;
+    main {
+      padding: 20px;
     }
-    .hero h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
+    h1, h2 {
+      margin: 0 0 10px;
     }
-    .hero p {
-      font-size: 18px;
-      margin-bottom: 20px;
+    p {
+      line-height: 1.6;
     }
     .btn {
+      display: inline-block;
       background-color: #0072C6;
-      border: none;
       color: #fff;
-      cursor: pointer;
-      font-size: 16px;
       padding: 10px 20px;
+      margin-top: 10px;
       text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
     }
-    /* Sección de características */
-    .features {
-      padding: 40px 20px;
+    .btn:hover {
+      background-color: #005b9f;
     }
-    .features h2 {
-      font-size: 24px;
+    section {
       margin-bottom: 20px;
     }
-    .features ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
+    .section-title {
+      border-bottom: 2px solid #0072C6;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+      font-size: 20px;
+      font-weight: bold;
     }
-    .features li {
-      font-size: 16px;
-      margin-bottom: 10px;
+    .hero, .features, .instructions, .calculator, .banks {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 15px;
     }
-    /* Sección de testimonios */
-    .testimonials {
-      background-color: #F5F5F5;
-      padding: 40px 20px;
-    }
-    .testimonials h2 {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-    blockquote {
-      font-size: 16px;
-      margin: 0;
-      padding: 0;
-    }
-    blockquote p {
-      margin-bottom: 10px;
-    }
-    blockquote cite {
-      font-style: italic;
-    }
-    /* Sección de calculadora */
-    .calculator {
-      padding: 40px 20px;
-      text-align: center;
-    }
-    .calculator input {
-      margin: 10px;
+    .calculator input, .calculator button {
+      width: 100%;
       padding: 10px;
+      margin: 5px 0;
       font-size: 16px;
-      width: 200px;
     }
     .calculator button {
       background-color: #0072C6;
       color: #fff;
       border: none;
-      padding: 10px 20px;
-      font-size: 16px;
+      border-radius: 5px;
       cursor: pointer;
     }
-    .result {
-      margin-top: 20px;
-      font-size: 18px;
+    .calculator button:hover {
+      background-color: #005b9f;
     }
-    /* Pie de página */
+    .result {
+      margin-top: 15px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .banks ul {
+      list-style: none;
+      padding: 0;
+    }
+    .banks li {
+      padding: 8px 0;
+      border-bottom: 1px solid #e0e0e0;
+    }
     footer {
       background-color: #0072C6;
       color: #fff;
-      padding: 20px;
       text-align: center;
-    }
-    footer p {
-      margin: 0;
+      padding: 10px;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">
-      🏦 OhYaraPay
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <h1>Solicita tu préstamo ahora</h1>
-      <p>Trámites rápidos y sencillos.</p>
-      <a href="#" class="btn">Solicitar préstamo</a>
-    </section>
-
-    <section class="features">
-      <h2>Características</h2>
-      <ul>
-        <li>Aprobación rápida</li>
-        <li>Tasas competitivas</li>
-        <li>Plazos flexibles</li>
-        <li>Atención personalizada</li>
-      </ul>
-    </section>
-
-    <section class="testimonials">
-      <h2>Lo que dicen nuestros clientes</h2>
-      <blockquote>
-        <p>"¡Excelente servicio! Obtuve mi préstamo en cuestión de horas."</p>
-        <cite>- Juan Pérez</cite>
-      </blockquote>
-    </section>
-
-    <section class="calculator">
-      <h2>Calculadora de Préstamos</h2>
-      <p>Ingresa el monto, el plazo y la tasa de interés para calcular tu cuota mensual.</p>
-
-      <div>
+  <div class="container">
+    <header>
+      <div class="logo">🏦 OhYaraPay</div>
+    </header>
+    <main>
+      <section class="hero">
+        <h1>Solicita tu préstamo ahora</h1>
+        <p>Trámites rápidos y sencillos en una experiencia amigable.</p>
+        <a href="#" class="btn">Solicitar préstamo</a>
+      </section>
+      
+      <section class="features">
+        <h2 class="section-title">Características</h2>
+        <ul>
+          <li>Aprobación rápida</li>
+          <li>Tasas competitivas</li>
+          <li>Plazos flexibles</li>
+          <li>Atención personalizada</li>
+        </ul>
+      </section>
+      
+      <section class="instructions">
+        <h2 class="section-title">Indicaciones</h2>
+        <p>Sigue estos pasos para calcular tu préstamo:</p>
+        <ol>
+          <li>Ingresa el monto del préstamo.</li>
+          <li>Selecciona el plazo en meses.</li>
+          <li>Introduce la tasa de interés mensual (%) a aplicar.</li>
+          <li>Presiona el botón "Calcular cuota" para ver tu pago mensual y total a pagar.</li>
+        </ol>
+      </section>
+      
+      <section class="calculator">
+        <h2 class="section-title">Calculadora de Préstamos</h2>
         <label for="amount">Monto del préstamo (S/):</label>
         <input type="number" id="amount" placeholder="Ej. 5000" min="1" required>
-      </div>
-      <div>
+        
         <label for="months">Plazo (en meses):</label>
         <input type="number" id="months" placeholder="Ej. 12" min="1" required>
-      </div>
-      <div>
+        
         <label for="interest">Tasa de interés mensual (%):</label>
         <input type="number" id="interest" placeholder="Ej. 11" step="0.01" min="0" required>
-      </div>
-      <div>
+        
         <button onclick="calculateLoan()">Calcular cuota</button>
-      </div>
-
-      <div id="result" class="result"></div>
-
-      <script>
-        function calculateLoan() {
-          // Obtener valores ingresados
-          const amount = parseFloat(document.getElementById('amount').value);
-          const months = parseInt(document.getElementById('months').value);
-          const interestPercent = parseFloat(document.getElementById('interest').value);
-
-          // Validación de datos
-          if (isNaN(amount) || isNaN(months) || isNaN(interestPercent) || amount <= 0 || months <= 0 || interestPercent < 0) {
-            displayResult('Por favor, ingresa valores válidos en todos los campos.');
-            return;
-          }
-
-          // Convertir la tasa de porcentaje a un decimal
-          const interestRate = interestPercent / 100;
-
-          // Calcular cuota mensual usando la fórmula del sistema francés:
-          // C = P * [r(1 + r)^n] / [(1 + r)^n - 1]
-          let monthlyPayment;
-          if (interestRate === 0) {
-            monthlyPayment = amount / months;
-          } else {
-            monthlyPayment = amount * (interestRate * Math.pow(1 + interestRate, months)) / (Math.pow(1 + interestRate, months) - 1);
-          }
-
-          // Calcular el total a pagar
-          const totalPayment = monthlyPayment * months;
-
-          // Mostrar los resultados con formato
-          displayResult(`
-            <strong>Cuota Mensual:</strong> S/ ${formatNumber(monthlyPayment)}<br>
-            <strong>Total a Pagar:</strong> S/ ${formatNumber(totalPayment)}
-          `);
-        }
-
-        // Función para mostrar el resultado en el DOM
-        function displayResult(message) {
-          document.getElementById('result').innerHTML = message;
-        }
-
-        // Función para formatear números con separadores de miles y dos decimales
-        function formatNumber(num) {
-          return num.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        }
-      </script>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 OhYaraPay - Todos los derechos reservados.</p>
-  </footer>
+        
+        <div id="result" class="result"></div>
+      </section>
+      
+      <section class="banks">
+        <h2 class="section-title">Bancos con los que trabajamos</h2>
+        <ul>
+          <li>Banco de Crédito del Perú (BCP)</li>
+          <li>Interbank</li>
+          <li>BBVA Perú</li>
+          <li>Scotiabank Perú</li>
+          <li>BanBif</li>
+          <li>Banco Pichincha</li>
+          <li>Banco Falabella</li>
+          <li>MiBanco</li>
+        </ul>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2025 OhYaraPay - Todos los derechos reservados.</p>
+    </footer>
+  </div>
+  
+  <script>
+    function calculateLoan() {
+      const amount = parseFloat(document.getElementById('amount').value);
+      const months = parseInt(document.getElementById('months').value);
+      const interestPercent = parseFloat(document.getElementById('interest').value);
+      
+      if (isNaN(amount) || isNaN(months) || isNaN(interestPercent) || amount <= 0 || months <= 0 || interestPercent < 0) {
+        displayResult('Por favor, ingresa valores válidos en todos los campos.');
+        return;
+      }
+      
+      const interestRate = interestPercent / 100;
+      let monthlyPayment;
+      
+      if (interestRate === 0) {
+        monthlyPayment = amount / months;
+      } else {
+        monthlyPayment = amount * (interestRate * Math.pow(1 + interestRate, months)) / (Math.pow(1 + interestRate, months) - 1);
+      }
+      
+      const totalPayment = monthlyPayment * months;
+      
+      displayResult(`
+        Cuota Mensual: S/ ${formatNumber(monthlyPayment)}<br>
+        Total a Pagar: S/ ${formatNumber(totalPayment)}
+      `);
+    }
+    
+    function displayResult(message) {
+      document.getElementById('result').innerHTML = message;
+    }
+    
+    function formatNumber(num) {
+      return num.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+  </script>
 </body>
 </html>
