@@ -1,218 +1,94 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OhYaraPay (Préstamos)</title>
+    <title>Calculadora de Préstamos - OhYaraPay</title>
     <style>
-        /* Estilos generales */
         body {
-            background: #000;
-            color: white;
-            font-family: 'Poppins', sans-serif;
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
-            padding: 0;
-            line-height: 1.6;
+        }
+        .calculator {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
             text-align: center;
         }
-
-        /* Encabezado atractivo */
-        .header {
-            background: linear-gradient(135deg, #ff7f50, #ff4500);
-            color: white;
-            padding: 40px 20px;
-            font-size: 3em;
-            font-weight: bold;
-            text-transform: uppercase;
-            box-shadow: 0 5px 15px rgba(255, 69, 0, 0.5);
+        h1 {
+            color: #4a90e2;
         }
-
-        /* Contenedor principal */
-        .contenedor {
-            margin: 50px 20px;
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 0 15px #ff4500;
-            background: rgba(0, 0, 0, 0.8);
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s;
         }
-
-        /* Inputs y botón */
-        input, button, textarea {
-            padding: 12px 20px;
-            margin: 10px;
-            font-size: 1.2em;
-            border: none;
-            border-radius: 8px;
+        input[type="number"]:focus {
+            border-color: #4a90e2;
             outline: none;
         }
-
-        input, textarea {
-            background: #333;
-            color: white;
-            width: 80%;
-        }
-
         button {
-            background: linear-gradient(45deg, #ff7f50, #ff4500);
+            background-color: #4a90e2;
             color: white;
-            font-weight: bold;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: background-color 0.3s;
         }
-
         button:hover {
-            transform: scale(1.1);
+            background-color: #357ab8;
         }
-
-        /* Resultado */
-        #resultado {
-            margin-top: 30px;
-            font-size: 1.5em;
-        }
-
-        /* Información adicional */
-        .info {
-            margin-top: 40px;
-            text-align: left;
-            padding: 0 20px;
-        }
-
-        /* Lista de bancos con imágenes */
-        .bancos {
+        .result {
             margin-top: 20px;
-        }
-
-        .bancos ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .bancos li {
-            margin: 20px 0;
             font-size: 1.2em;
-            display: flex;
-            align-items: center;
-            gap: 20px;
+            color: #333;
         }
-
-        .bancos img {
-            width: 50px;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        /* Pie de página */
-        .footer {
-            margin-top: 40px;
-            font-size: 1.2em;
-        }
-
-        /* Icono de WhatsApp flotante */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #25d366;
-            color: white;
-            border-radius: 50%;
-            padding: 15px;
-            font-size: 2em;
-            text-decoration: none;
-            box-shadow: 0 0 15px rgba(37, 211, 102, 0.7);
-            z-index: 1000;
-        }
-
-        /* Formulario de contacto */
-        .formulario {
-            margin-top: 40px;
-            text-align: center;
-        }
-
     </style>
 </head>
-
 <body>
 
-    <!-- Encabezado principal -->
-    <div class="header">🚀 OhYaraPay (Préstamos)</div>
+<div class="calculator">
+    <h1>OhYaraPay</h1>
+    <label for="amount">Monto del Préstamo:</label>
+    <input type="number" id="amount" placeholder="Ingrese el monto" required>
+    
+    <label for="months">Meses:</label>
+    <input type="number" id="months" placeholder="Ingrese los meses" required>
+    
+    <button onclick="calculateLoan()">Calcular</button>
+    
+    <div class="result" id="result"></div>
+</div>
 
-    <!-- Calculadora -->
-    <div class="contenedor">
-        <h2>🧮 Calculadora de Préstamos</h2>
+<script>
+    function calculateLoan() {
+        const amount = parseFloat(document.getElementById('amount').value);
+        const months = parseInt(document.getElementById('months').value);
+        const interestRate = 0.11; // 11%
 
-        <label for="monto">💰 Monto del préstamo (S/):</label>
-        <input type="number" id="monto" placeholder="Ingresa el monto" required>
-
-        <label for="meses">📅 Plazo en meses:</label>
-        <input type="number" id="meses" placeholder="Ingresa los meses" required>
-
-        <br>
-        <button onclick="calcularPrestamo()">Calcular 📊</button>
-
-        <div id="resultado"></div>
-    </div>
-
-    <!-- Información sobre cómo solicitar un préstamo -->
-    <div class="info">
-        <h2>📋 ¿Cómo solicitar un préstamo con OhYaraPay?</h2>
-        <p>1. Ingresa el monto y el plazo para calcular tu cuota mensual.</p>
-        <p>2. Completa el formulario de solicitud que te proporcionaremos.</p>
-        <p>3. Evaluaremos tu solicitud y te contactaremos en menos de 24 horas.</p>
-        <p>4. Una vez aprobado, recibirás el desembolso directamente en tu cuenta bancaria. 🏦</p>
-    </div>
-
-    <!-- Lista de bancos con los que trabajamos -->
-    <div class="bancos">
-        <h2>🏦 Bancos del Perú con los que trabajamos:</h2>
-        <ul>
-            <li><img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Logo_BCP.png" alt="BCP"> Banco de Crédito del Perú (BCP)</li>
-            <li><img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Interbank_logo.png" alt="Interbank"> Interbank</li>
-            <li><img src="https://upload.wikimedia.org/wikipedia/commons/0/03/BBVA_logo.png" alt="BBVA"> BBVA Perú</li>
-            <li><img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Scotiabank.png" alt="Scotiabank"> Scotiabank</li>
-        </ul>
-    </div>
-
-    <!-- Formulario de contacto -->
-    <div class="formulario">
-        <h2>✍️ Déjanos tus datos</h2>
-        <input type="text" id="nombre" placeholder="Tu nombre" required><br>
-        <input type="email" id="email" placeholder="Tu correo electrónico" required><br>
-        <textarea id="mensaje" placeholder="Tu mensaje" rows="4" required></textarea><br>
-        <button>Enviar 📩</button>
-    </div>
-
-    <!-- Icono de WhatsApp flotante -->
-    <a href="https://wa.me/123456789" class="whatsapp-float" target="_blank">📞</a>
-
-    <!-- Pie de página -->
-    <div class="footer">
-        ¡En OhYaraPay, te ayudamos a realizar tus sueños realidad con préstamos rápidos y seguros! 🚀
-    </div>
-
-    <!-- Script de la calculadora -->
-    <script>
-        function calcularPrestamo() {
-            const monto = parseFloat(document.getElementById('monto').value);
-            const meses = parseInt(document.getElementById('meses').value);
-            const tasaInteres = 0.11 / 12;
-
-            if (isNaN(monto) || isNaN(meses) || monto <= 0 || meses <= 0) {
-                alert("Por favor, ingresa valores válidos.");
-                return;
-            }
-
-            const cuota = monto * (tasaInteres * Math.pow(1 + tasaInteres, meses)) / (Math.pow(1 + tasaInteres, meses) - 1);
-            const totalPagar = cuota * meses;
-
-            document.getElementById('resultado').innerHTML = `
-                <p>💸 Cuota mensual: S/ ${cuota.toFixed(2)}</p>
-                <p>📊 Total a pagar: S/ ${totalPagar.toFixed(2)}</p>
-                <p>📈 Tasa de interés anual: 11%</p>
-            `;
+        if (isNaN(amount) || isNaN(months) || amount <= 0 || months <= 0) {
+            document.getElementById('result').innerText = "Por favor, ingrese valores válidos.";
+            return;
         }
-    </script>
+
+        const totalInterest = amount * interestRate * (months / 12);
+        const totalAmount = amount + totalInterest;
+        const monthlyPayment = totalAmount / months;
+
+        document.getElementById('result').innerText = `Total a Pagar: ${totalAmount.toFixed(2)}\nPago Mensual: ${monthlyPayment.toFixed(2)}`;
+    }
+</script>
 
 </body>
-
 </html>
