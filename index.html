@@ -11,7 +11,6 @@
       margin: 0;
       padding: 0;
     }
-
     /* Encabezado */
     header {
       background-color: #0072C6;
@@ -19,29 +18,24 @@
       padding: 20px;
       text-align: center;
     }
-
     .logo {
       font-size: 24px;
       font-weight: bold;
     }
-
     /* Sección principal */
     .hero {
       background-color: #F5F5F5;
       padding: 50px 20px;
       text-align: center;
     }
-
     .hero h1 {
       font-size: 32px;
       margin-bottom: 10px;
     }
-
     .hero p {
       font-size: 18px;
       margin-bottom: 20px;
     }
-
     .btn {
       background-color: #0072C6;
       border: none;
@@ -51,66 +45,54 @@
       padding: 10px 20px;
       text-decoration: none;
     }
-
     /* Sección de características */
     .features {
       padding: 40px 20px;
     }
-
     .features h2 {
       font-size: 24px;
       margin-bottom: 20px;
     }
-
     .features ul {
       list-style-type: none;
       margin: 0;
       padding: 0;
     }
-
     .features li {
       font-size: 16px;
       margin-bottom: 10px;
     }
-
     /* Sección de testimonios */
     .testimonials {
       background-color: #F5F5F5;
       padding: 40px 20px;
     }
-
     .testimonials h2 {
       font-size: 24px;
       margin-bottom: 20px;
     }
-
     blockquote {
       font-size: 16px;
       margin: 0;
       padding: 0;
     }
-
     blockquote p {
       margin-bottom: 10px;
     }
-
     blockquote cite {
       font-style: italic;
     }
-
     /* Sección de calculadora */
     .calculator {
       padding: 40px 20px;
       text-align: center;
     }
-
     .calculator input {
       margin: 10px;
       padding: 10px;
       font-size: 16px;
       width: 200px;
     }
-
     .calculator button {
       background-color: #0072C6;
       color: #fff;
@@ -119,12 +101,10 @@
       font-size: 16px;
       cursor: pointer;
     }
-
     .result {
       margin-top: 20px;
       font-size: 18px;
     }
-
     /* Pie de página */
     footer {
       background-color: #0072C6;
@@ -132,7 +112,6 @@
       padding: 20px;
       text-align: center;
     }
-
     footer p {
       margin: 0;
     }
@@ -172,5 +151,76 @@
 
     <section class="calculator">
       <h2>Calculadora de Préstamos</h2>
-      <p>Ingresa el monto
-        
+      <p>Ingresa el monto, el plazo y la tasa de interés para calcular tu cuota mensual.</p>
+
+      <div>
+        <label for="amount">Monto del préstamo (S/):</label>
+        <input type="number" id="amount" placeholder="Ej. 5000" min="1" required>
+      </div>
+      <div>
+        <label for="months">Plazo (en meses):</label>
+        <input type="number" id="months" placeholder="Ej. 12" min="1" required>
+      </div>
+      <div>
+        <label for="interest">Tasa de interés mensual (%):</label>
+        <input type="number" id="interest" placeholder="Ej. 11" step="0.01" min="0" required>
+      </div>
+      <div>
+        <button onclick="calculateLoan()">Calcular cuota</button>
+      </div>
+
+      <div id="result" class="result"></div>
+
+      <script>
+        function calculateLoan() {
+          // Obtener valores ingresados
+          const amount = parseFloat(document.getElementById('amount').value);
+          const months = parseInt(document.getElementById('months').value);
+          const interestPercent = parseFloat(document.getElementById('interest').value);
+
+          // Validación de datos
+          if (isNaN(amount) || isNaN(months) || isNaN(interestPercent) || amount <= 0 || months <= 0 || interestPercent < 0) {
+            displayResult('Por favor, ingresa valores válidos en todos los campos.');
+            return;
+          }
+
+          // Convertir la tasa de porcentaje a un decimal
+          const interestRate = interestPercent / 100;
+
+          // Calcular cuota mensual usando la fórmula del sistema francés:
+          // C = P * [r(1 + r)^n] / [(1 + r)^n - 1]
+          let monthlyPayment;
+          if (interestRate === 0) {
+            monthlyPayment = amount / months;
+          } else {
+            monthlyPayment = amount * (interestRate * Math.pow(1 + interestRate, months)) / (Math.pow(1 + interestRate, months) - 1);
+          }
+
+          // Calcular el total a pagar
+          const totalPayment = monthlyPayment * months;
+
+          // Mostrar los resultados con formato
+          displayResult(`
+            <strong>Cuota Mensual:</strong> S/ ${formatNumber(monthlyPayment)}<br>
+            <strong>Total a Pagar:</strong> S/ ${formatNumber(totalPayment)}
+          `);
+        }
+
+        // Función para mostrar el resultado en el DOM
+        function displayResult(message) {
+          document.getElementById('result').innerHTML = message;
+        }
+
+        // Función para formatear números con separadores de miles y dos decimales
+        function formatNumber(num) {
+          return num.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+      </script>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 OhYaraPay - Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
