@@ -1,115 +1,141 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Préstamos - OhYaraPay</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            flex-direction: column;
-        }
-        .banner {
-            background-color: #4a90e2;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            width: 100%;
-            max-width: 400px;
-            margin-bottom: 20px;
-        }
-        .banner img {
-            width: 50px; /* Ajusta el tamaño del logo aquí */
-            display: block;
-            margin: 0 auto;
-        }
-        .calculator {
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            width: 300px;
-            text-align: center;
-        }
-        h1 {
-            color: #4a90e2;
-        }
-        input[type="number"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            transition: border-color 0.3s;
-        }
-        input[type="number"]:focus {
-            border-color: #4a90e2;
-            outline: none;
-        }
-        button {
-            background-color: #4a90e2;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #357ab8;
-        }
-        .result {
-            margin-top: 20px;
-            font-size: 1.2em;
-            color: #333;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OhYaraPay - Solicita tu préstamo</title>
+  <style>
+    /* Estilos generales */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Encabezado */
+    header {
+      background-color: #0072C6;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    /* Sección principal */
+    .hero {
+      background-color: #F5F5F5;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      background-color: #0072C6;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 10px 20px;
+      text-decoration: none;
+    }
+
+    /* Sección de características */
+    .features {
+      padding: 40px 20px;
+    }
+
+    .features h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .features ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .features li {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    /* Sección de testimonios */
+    .testimonials {
+      background-color: #F5F5F5;
+      padding: 40px 20px;
+    }
+
+    .testimonials h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    blockquote {
+      font-size: 16px;
+      margin: 0;
+      padding: 0;
+    }
+
+    blockquote p {
+      margin-bottom: 10px;
+    }
+
+    blockquote cite {
+      font-style: italic;
+    }
+
+    /* Pie de página */
+    footer {
+      background-color: #0072C6;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer p {
+      margin: 0;
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <div class="logo">
+      🏦 OhYaraPay
+    </div>
+  </header>
 
-<div class="banner">
-    <img src="https://via.placeholder.com/50" alt="Logo de Banco">
-    <h1>OhYaraPay</h1>
-    <p>💰</p> <!-- Puedes cambiar este emoji por otro o una imagen -->
-</div>
+  <main>
+    <section class="hero">
+      <h1>Solicita tu préstamo ahora</h1>
+      <p>Trámites rápidos y sencillos.</p>
+      <a href="#" class="btn">Solicitar préstamo</a>
+    </section>
 
-<div class="calculator">
-    <label for="amount">Monto del Préstamo:</label>
-    <input type="number" id="amount" placeholder="Ingrese el monto" required>
-    
-    <label for="months">Meses:</label>
-    <input type="number" id="months" placeholder="Ingrese los meses" required>
-    
-    <button onclick="calculateLoan()">Calcular</button>
-    
-    <div class="result" id="result"></div>
-</div>
+    <section class="features">
+      <h2>Características</h2>
+      <ul>
+        <li>Aprobación rápida</li>
+        <li>Tasas competitivas</li>
+        <li>Plazos flexibles</li>
+        <li>Atención personalizada</li>
+      </ul>
+    </section>
 
-<script>
-    function calculateLoan() {
-        const amount = parseFloat(document.getElementById('amount').value);
-        const months = parseInt(document.getElementById('months').value);
-        const interestRate = 0.11; // 11%
-
-        if (isNaN(amount) || isNaN(months) || amount <= 0 || months <= 0) {
-            document.getElementById('result').innerText = "Por favor, ingrese valores válidos.";
-            return;
-        }
-
-        const totalInterest = amount * interestRate * (months / 12);
-        const totalAmount = amount + totalInterest;
-        const monthlyPayment = totalAmount / months;
-
-        document.getElementById('result').innerText = `Total a Pagar: ${totalAmount.toFixed(2)}\nPago Mensual: ${monthlyPayment.toFixed(2)}`;
-    }
-</script>
-
-</body>
-</html>
+    <section class="testimonials">
+      <h2>Lo que dicen nuestros clientes</h2>
+      <blockquote>
+        <p>"¡Excelente servicio! Obtuve mi préstamo en cuestión de horas."</p>
