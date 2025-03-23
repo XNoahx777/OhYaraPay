@@ -79,7 +79,8 @@
       color: #fff;
     }
 
-    h1, h2 {
+    h1,
+    h2 {
       margin-bottom: 10px;
     }
 
@@ -128,9 +129,23 @@
       padding-left: 15px;
     }
 
-    .features li,
+    .features li {
+      margin-bottom: 8px;
+      position: relative;
+      padding-left: 25px;
+    }
+
+    .features li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #4caf50; /* Verde para el check */
+      font-weight: bold;
+    }
+
     .banks li {
       margin-bottom: 8px;
+      padding-left: 15px;
     }
 
     .calculator input,
@@ -250,8 +265,8 @@
         <ul>
           <li>Banco de Crédito del Perú (BCP)</li>
           <li>Interbank</li>
-          <li>BBVA Perú</li>
-          <li>Scotiabank Perú</li>
+          <li>BBVA</li>
+          <li>Scotiabank</li>
           <li>BanBif</li>
           <li>Banco Pichincha</li>
           <li>Banco Falabella</li>
@@ -261,7 +276,7 @@
     </main>
 
     <footer>
-      <p>&copy; 2025 OhYaraPay - Todos los derechos reservados.</p>
+      <p>&copy; 2025 OhYaraPay - Una empresa de Alliance Holding LLC Todos los derechos reservados.</p>
     </footer>
   </div>
 
