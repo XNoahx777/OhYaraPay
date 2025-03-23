@@ -21,7 +21,7 @@
 
     .container {
       max-width: 600px;
-      margin: 0 auto; /* Elimina bordes blancos */
+      margin: 0 auto;
       background-color: #fff;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
@@ -80,7 +80,7 @@
     }
 
     h1, h2 {
-      margin: 0 0 10px;
+      margin-bottom: 10px;
     }
 
     p {
@@ -112,14 +112,29 @@
       font-weight: bold;
     }
 
-    .hero, .features, .calculator, .banks {
+    .hero,
+    .features,
+    .calculator,
+    .banks {
       background-color: #3a3a3a; /* Plomo más oscuro */
       padding: 15px;
       border-radius: 5px;
       margin-bottom: 15px;
     }
 
-    .calculator input, .calculator button {
+    .features ul,
+    .banks ul {
+      list-style: none;
+      padding-left: 15px;
+    }
+
+    .features li,
+    .banks li {
+      margin-bottom: 8px;
+    }
+
+    .calculator input,
+    .calculator button {
       width: 100%;
       padding: 12px;
       margin: 5px 0;
@@ -140,6 +155,12 @@
     .calculator button:hover {
       background-color: #ff5722;
       box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .result {
+      margin-top: 15px;
+      font-size: 18px;
+      font-weight: bold;
     }
 
     footer {
@@ -185,6 +206,7 @@
         <a href="#">Inicio</a>
         <a href="#">Características</a>
         <a href="#">Calculadora</a>
+        <a href="#">Bancos</a>
         <a href="#">Contacto</a>
       </nav>
     </header>
@@ -222,6 +244,20 @@
 
         <div id="result" class="result"></div>
       </section>
+
+      <section class="banks">
+        <h2 class="section-title">Bancos con los que trabajamos</h2>
+        <ul>
+          <li>Banco de Crédito del Perú (BCP)</li>
+          <li>Interbank</li>
+          <li>BBVA Perú</li>
+          <li>Scotiabank Perú</li>
+          <li>BanBif</li>
+          <li>Banco Pichincha</li>
+          <li>Banco Falabella</li>
+          <li>MiBanco</li>
+        </ul>
+      </section>
     </main>
 
     <footer>
@@ -235,6 +271,34 @@
     function toggleMenu() {
       const menu = document.getElementById('menu');
       menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function calculateLoan() {
+      const amount = parseFloat(document.getElementById('amount').value);
+      const months = parseInt(document.getElementById('months').value);
+      const interestRate = 0.11; // Tasa fija del 11%
+
+      if (isNaN(amount) || isNaN(months) || amount <= 0 || months <= 0) {
+        displayResult('Por favor, ingresa valores válidos en todos los campos.');
+        return;
+      }
+
+      // Fórmula de cuota de préstamo
+      const monthlyPayment = amount * (interestRate * Math.pow(1 + interestRate, months)) / (Math.pow(1 + interestRate, months) - 1);
+      const totalPayment = monthlyPayment * months;
+
+      displayResult(`
+        Cuota Mensual: S/ ${formatNumber(monthlyPayment)}<br>
+        Total a Pagar: S/ ${formatNumber(totalPayment)}
+      `);
+    }
+
+    function displayResult(message) {
+      document.getElementById('result').innerHTML = message;
+    }
+
+    function formatNumber(num) {
+      return num.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
   </script>
 </body>
