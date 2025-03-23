@@ -1,45 +1,57 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OhYaraPay - Solicita tu préstamo</title>
   <style>
     /* Estilos generales */
-    body {
-      font-family: 'Roboto', sans-serif;
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
       background-color: #f4f4f4;
       color: #333;
     }
+
     .container {
       max-width: 600px;
-      margin: 20px auto;
+      margin: 0 auto; /* Elimina bordes blancos arriba y abajo */
       background-color: #fff;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
       overflow: hidden;
     }
+
     header {
       background-color: #ff7f32; /* Naranja */
       color: #fff;
       padding: 20px;
       text-align: center;
     }
+
     .logo {
       font-size: 24px;
       font-weight: bold;
     }
+
     main {
       padding: 20px;
     }
+
     h1, h2 {
       margin: 0 0 10px;
     }
+
     p {
       line-height: 1.6;
     }
+
     .btn {
       display: inline-block;
       background-color: #ff7f32; /* Naranja */
@@ -49,16 +61,19 @@
       text-decoration: none;
       border-radius: 50px; /* Estilo de botón redondeado */
       text-align: center;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease;
     }
+
     .btn:hover {
       background-color: #ff5722; /* Naranja más oscuro */
-      box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
     }
+
     section {
       margin-bottom: 20px;
     }
+
     .section-title {
       border-bottom: 2px solid #ff7f32;
       padding-bottom: 5px;
@@ -66,12 +81,14 @@
       font-size: 20px;
       font-weight: bold;
     }
+
     .hero, .features, .instructions, .calculator, .banks {
       background-color: #e0e0e0; /* Plomo */
       padding: 15px;
       border-radius: 5px;
       margin-bottom: 15px;
     }
+
     .calculator input, .calculator button {
       width: 100%;
       padding: 12px;
@@ -80,31 +97,37 @@
       border-radius: 50px; /* Bordes redondeados estilo iPhone */
       border: 1px solid #ccc;
     }
+
     .calculator button {
       background-color: #ff7f32; /* Naranja */
       color: #fff;
       border: none;
       cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease;
     }
+
     .calculator button:hover {
       background-color: #ff5722; /* Naranja más oscuro */
-      box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
     }
+
     .result {
       margin-top: 15px;
       font-size: 18px;
       font-weight: bold;
     }
+
     .banks ul {
       list-style: none;
       padding: 0;
     }
+
     .banks li {
       padding: 8px 0;
       border-bottom: 1px solid #e0e0e0;
     }
+
     footer {
       background-color: #ff7f32; /* Naranja */
       color: #fff;
@@ -114,6 +137,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <header>
@@ -125,44 +149,30 @@
         <p>Trámites rápidos y sencillos en una experiencia amigable.</p>
         <a href="#" class="btn">Solicitar préstamo</a>
       </section>
-      
+
       <section class="features">
         <h2 class="section-title">Características</h2>
         <ul>
           <li>Aprobación rápida</li>
-          <li>Tasas competitivas</li>
+          <li>Tasa fija del 11% mensual</li>
           <li>Plazos flexibles</li>
           <li>Atención personalizada</li>
         </ul>
       </section>
-      
-      <section class="instructions">
-        <h2 class="section-title">Indicaciones</h2>
-        <p>Sigue estos pasos para calcular tu préstamo:</p>
-        <ol>
-          <li>Ingresa el monto del préstamo.</li>
-          <li>Selecciona el plazo en meses.</li>
-          <li>Introduce la tasa de interés mensual (%) a aplicar.</li>
-          <li>Presiona el botón "Calcular cuota" para ver tu pago mensual y total a pagar.</li>
-        </ol>
-      </section>
-      
+
       <section class="calculator">
         <h2 class="section-title">Calculadora de Préstamos</h2>
         <label for="amount">Monto del préstamo (S/):</label>
         <input type="number" id="amount" placeholder="Ej. 5000" min="1" required>
-        
+
         <label for="months">Plazo (en meses):</label>
         <input type="number" id="months" placeholder="Ej. 12" min="1" required>
-        
-        <label for="interest">Tasa de interés mensual (%):</label>
-        <input type="number" id="interest" placeholder="Ej. 11" step="0.01" min="0" required>
-        
+
         <button onclick="calculateLoan()">Calcular cuota</button>
-        
+
         <div id="result" class="result"></div>
       </section>
-      
+
       <section class="banks">
         <h2 class="section-title">Bancos con los que trabajamos</h2>
         <ul>
@@ -181,42 +191,35 @@
       <p>&copy; 2025 OhYaraPay - Todos los derechos reservados.</p>
     </footer>
   </div>
-  
+
   <script>
     function calculateLoan() {
       const amount = parseFloat(document.getElementById('amount').value);
       const months = parseInt(document.getElementById('months').value);
-      const interestPercent = parseFloat(document.getElementById('interest').value);
-      
-      if (isNaN(amount) || isNaN(months) || isNaN(interestPercent) || amount <= 0 || months <= 0 || interestPercent < 0) {
+      const interestRate = 0.11;
+
+      if (isNaN(amount) || isNaN(months) || amount <= 0 || months <= 0) {
         displayResult('Por favor, ingresa valores válidos en todos los campos.');
         return;
       }
-      
-      const interestRate = interestPercent / 100;
-      let monthlyPayment;
-      
-      if (interestRate === 0) {
-        monthlyPayment = amount / months;
-      } else {
-        monthlyPayment = amount * (interestRate * Math.pow(1 + interestRate, months)) / (Math.pow(1 + interestRate, months) - 1);
-      }
-      
+
+      const monthlyPayment = amount * (interestRate * Math.pow(1 + interestRate, months)) / (Math.pow(1 + interestRate, months) - 1);
       const totalPayment = monthlyPayment * months;
-      
+
       displayResult(`
         Cuota Mensual: S/ ${formatNumber(monthlyPayment)}<br>
         Total a Pagar: S/ ${formatNumber(totalPayment)}
       `);
     }
-    
+
     function displayResult(message) {
       document.getElementById('result').innerHTML = message;
     }
-    
+
     function formatNumber(num) {
       return num.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
   </script>
 </body>
+
 </html>
